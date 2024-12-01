@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "yacl/crypto/primitives/sse/sse.h"
+#include "yacl/examples/primitives/sse/sse.h"
 
-namespace yacl::crypto::primitives::sse {
+namespace yacl::examples::primitives::sse {
 
 SSE::SSE(int bucket_size, int slot_size, int lambda, int n_lambda,
          const std::string& filename)
@@ -25,8 +25,9 @@ SSE::SSE(int bucket_size, int slot_size, int lambda, int n_lambda,
 std::string SSE::getKt() { return K_map_["Kt"]; }
 
 // EDBSetup
-std::pair<std::vector<std::vector<yacl::crypto::primitives::sse::TSet::Record>>,
-          std::string>
+std::pair<
+    std::vector<std::vector<yacl::examples::primitives::sse::TSet::Record>>,
+    std::string>
 SSE::EDBSetup() {
   processAndUpdateTAndXSet();
   auto [TSet, Kt] = tset_.TSetSetup(T_, keywords_);
@@ -383,8 +384,8 @@ void SSE::SaveKeys(const std::map<std::string, std::string>& K_map,
 }
 
 void SSE::SaveTSet(
-    const std::vector<std::vector<yacl::crypto::primitives::sse::TSet::Record>>&
-        TSet,
+    const std::vector<
+        std::vector<yacl::examples::primitives::sse::TSet::Record>>& TSet,
     const std::string& file_path) {
   std::ofstream tset_file(file_path, std::ios::binary);
 
@@ -475,18 +476,18 @@ std::map<std::string, std::string> SSE::LoadKeys(const std::string& file_path) {
   return K_map_read;
 }
 
-std::vector<std::vector<yacl::crypto::primitives::sse::TSet::Record>>
+std::vector<std::vector<yacl::examples::primitives::sse::TSet::Record>>
 SSE::LoadTSet(const std::string& file_path) {
   std::ifstream tset_file(file_path, std::ios::binary);
-  std::vector<std::vector<yacl::crypto::primitives::sse::TSet::Record>> TSet;
+  std::vector<std::vector<yacl::examples::primitives::sse::TSet::Record>> TSet;
   while (tset_file.good()) {
     size_t bucket_size;
     tset_file.read(reinterpret_cast<char*>(&bucket_size), sizeof(size_t));
     if (!tset_file.good()) break;  // 检查是否到达文件末尾
 
-    std::vector<yacl::crypto::primitives::sse::TSet::Record> bucket;
+    std::vector<yacl::examples::primitives::sse::TSet::Record> bucket;
     for (size_t i = 0; i < bucket_size; i++) {
-      yacl::crypto::primitives::sse::TSet::Record entry;
+      yacl::examples::primitives::sse::TSet::Record entry;
       size_t entry_size;
       tset_file.read(reinterpret_cast<char*>(&entry_size), sizeof(size_t));
       entry.value.resize(entry_size);
@@ -529,4 +530,4 @@ std::vector<yacl::crypto::EcPoint> SSE::LoadXSet(
   return XSet;
 }
 
-}  // namespace yacl::crypto::primitives::sse
+}  // namespace yacl::examples::primitives::sse

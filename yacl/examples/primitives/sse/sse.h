@@ -14,25 +14,25 @@
 
 #pragma once
 
-#include <tuple>
-#include <utility>
-#include <set>
-#include <unordered_map>
+#include <algorithm>
 #include <map>
 #include <memory>
+#include <set>
 #include <string>
+#include <tuple>
+#include <unordered_map>
+#include <utility>
 #include <vector>
-#include <algorithm>
 
 #include "yacl/crypto/block_cipher/symmetric_crypto.h"
 #include "yacl/crypto/ecc/openssl/openssl_group.h"
-#include "yacl/crypto/primitives/sse/TSet.h"
 #include "yacl/crypto/rand/rand.h"
+#include "yacl/examples/primitives/sse/TSet.h"
 #include "yacl/io/rw/csv_reader.h"
 #include "yacl/io/stream/file_io.h"
 #include "yacl/math/mpint/mp_int.h"
 
-namespace yacl::crypto::primitives::sse {
+namespace yacl::examples::primitives::sse {
 
 class SSE {
  public:
@@ -42,21 +42,21 @@ class SSE {
           "/home/xbw/yacl/yacl/crypto/primitives/sse/test.csv");
 
   std::pair<
-      std::vector<std::vector<yacl::crypto::primitives::sse::TSet::Record>>,
+      std::vector<std::vector<yacl::examples::primitives::sse::TSet::Record>>,
       std::string>
   EDBSetup();
 
   std::string getKt();
   std::tuple<
       std::map<std::string, std::string>,
-      std::vector<std::vector<yacl::crypto::primitives::sse::TSet::Record>>,
+      std::vector<std::vector<yacl::examples::primitives::sse::TSet::Record>>,
       std::vector<yacl::crypto::EcPoint>>
   SaveEDB(const std::string& k_map_file = "/tmp/sse_test_data/K_map.bin",
           const std::string& tset_file = "/tmp/sse_test_data/TSet.bin",
           const std::string& xset_file = "/tmp/sse_test_data/XSet.bin");
   std::tuple<
       std::map<std::string, std::string>,
-      std::vector<std::vector<yacl::crypto::primitives::sse::TSet::Record>>,
+      std::vector<std::vector<yacl::examples::primitives::sse::TSet::Record>>,
       std::vector<yacl::crypto::EcPoint>>
   LoadEDB(const std::string& k_map_file = "/tmp/sse_test_data/K_map.bin",
           const std::string& tset_file = "/tmp/sse_test_data/TSet.bin",
@@ -96,13 +96,13 @@ class SSE {
                 const std::string& file_path);
   void SaveTSet(
       const std::vector<
-          std::vector<yacl::crypto::primitives::sse::TSet::Record>>& TSet,
+          std::vector<yacl::examples::primitives::sse::TSet::Record>>& TSet,
       const std::string& file_path);
   void SaveXSet(const std::vector<yacl::crypto::EcPoint>& XSet,
                 const std::string& file_path,
                 const std::unique_ptr<yacl::crypto::EcGroup>& ec_group);
   std::map<std::string, std::string> LoadKeys(const std::string& file_path);
-  std::vector<std::vector<yacl::crypto::primitives::sse::TSet::Record>>
+  std::vector<std::vector<yacl::examples::primitives::sse::TSet::Record>>
   LoadTSet(const std::string& file_path);
   std::vector<yacl::crypto::EcPoint> LoadXSet(
       const std::string& file_path,
@@ -118,8 +118,8 @@ class SSE {
                      std::vector<std::pair<std::vector<uint8_t>, std::string>>>
       T_;
   std::vector<yacl::crypto::EcPoint> XSet_;
-  std::vector<std::vector<yacl::crypto::primitives::sse::TSet::Record>> TSet_;
+  std::vector<std::vector<yacl::examples::primitives::sse::TSet::Record>> TSet_;
 
   TSet tset_;
 };
-}  // namespace yacl::crypto::primitives::sse
+}  // namespace yacl::examples::primitives::sse

@@ -12,12 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "yacl/crypto/primitives/sse/TSet.h"
+#include "yacl/examples/primitives/sse/TSet.h"
 
 #include <gtest/gtest.h>
+
 #include <memory>
 
-namespace yacl::crypto::primitives::sse {
+namespace yacl::examples::primitives::sse {
 
 class TSetTest : public ::testing::Test {
  protected:
@@ -131,4 +132,4 @@ TEST_F(TSetTest, CompleteRetrievalFlow) {
   EXPECT_EQ(retrieved[1].second, "value2");
 }
 
-}  // namespace yacl::crypto::primitives::sse
+}  // namespace yacl::examples::primitives::sse

@@ -12,12 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "yacl/crypto/primitives/sse/sse.h"
+#include "yacl/examples/primitives/sse/sse.h"
 
 #include <gtest/gtest.h>
+
 #include <unordered_set>
 
-namespace yacl::crypto::primitives::sse {
+namespace yacl::examples::primitives::sse {
 
 class SSETest : public ::testing::Test {
  protected:
@@ -136,4 +137,4 @@ TEST_F(SSETest, SaveAndLoadEDB) {
   }
 }
 
-}  // namespace yacl::crypto::primitives::sse
+}  // namespace yacl::examples::primitives::sse

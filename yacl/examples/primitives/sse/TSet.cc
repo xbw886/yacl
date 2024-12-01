@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "yacl/crypto/primitives/sse/TSet.h"
+#include "yacl/examples/primitives/sse/TSet.h"
 
-namespace yacl::crypto::primitives::sse {
+namespace yacl::examples::primitives::sse {
 
 TSet::TSet(int B, int S, int lambda, int n_lambda)
     : B_(B), S_(S), lambda_(lambda), n_lambda_(n_lambda) {
@@ -229,4 +229,4 @@ std::vector<std::pair<std::vector<uint8_t>, std::string>> TSet::TSetRetrieve(
   return t;
 }
 
-}  // namespace yacl::crypto::primitives::sse
+}  // namespace yacl::examples::primitives::sse

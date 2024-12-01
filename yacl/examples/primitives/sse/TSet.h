@@ -14,19 +14,17 @@
 
 #pragma once
 
-#include <unordered_map>
 #include <set>
-#include <utility>
 #include <string>
+#include <unordered_map>
+#include <utility>
 #include <vector>
 
 #include "yacl/crypto/hash/ssl_hash.h"
 #include "yacl/crypto/hmac/hmac_sha256.h"
 #include "yacl/crypto/rand/rand.h"
 
-
-
-namespace yacl::crypto::primitives::sse {
+namespace yacl::examples::primitives::sse {
 
 class TSet {
  public:
@@ -76,4 +74,4 @@ class TSet {
   std::vector<std::set<int>> Free_;
 };
 
-}  // namespace yacl::crypto::primitives::sse
+}  // namespace yacl::examples::primitives::sse
